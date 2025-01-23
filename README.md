@@ -3,13 +3,8 @@ A multi-platform image for running [Direwolf] for APRS projects
 
 ## Installing
 ### Docker
-`docker pull w2bro/direwolf`
+`docker pull pheezer/docker-direwolf`
 
-### Kubernetes
-```shell
-helm repo add w2bro https://radio-charts.w2bro.dev
-helm install w2bro/direwolf
-```
 
 ## Environment Variables
 
@@ -57,7 +52,7 @@ spec:
       nodeName: homelab-pi4b-node-attic-2
       containers:
       - name: direwolf
-        image: w2bro/direwolf
+        image: pheezer/docker-direwolf
         imagePullPolicy: Always
         securityContext:
           privileged: true
