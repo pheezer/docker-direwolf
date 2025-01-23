@@ -26,9 +26,34 @@ if [ -n "$ADEVICE" ]; then
   sed -i "s/^ADEVICE.*$/ADEVICE ${ADEVICE//\//\\/}/g" direwolf.conf
 fi
 
+if [ -n "$PTT" ]; then
+  sed -i "s/^#PTT.*$/PTT ${PTT//\//\\/}/g" direwolf.conf
+fi
+
+if [ -n "$IGTXVIA" ]; then
+  sed -i "s/^#IGTXVIA.*$/IGTXVIA ${IGTXVIA//\//\\/}/g" direwolf.conf
+fi
+
+if [ -n "$DIGIPEAT" ]; then
+  sed -i "s/^#DIGIPEAT.*$/DIGIPEAT ${DIGIPEAT//\//\\/}/g" direwolf.conf
+fi
+
 if [ -n "$IGSERVER" ]; then
   sed -i "s/^IGSERVER.*$/IGSERVER ${IGSERVER}/g" direwolf.conf
 fi
+
+if [ -n "$FILTER_RF_RF" ]; then
+  sed -i "s/^#FILTER_RF_RF.*$/FILTER 0 0 ${FILTER_RF_RF//\//\\/}/g" direwolf.conf
+fi
+
+if [ -n "$FILTER_IG_RF" ]; then
+  sed -i "s/^#FILTER_IG_RF.*$/FILTER IG 0 ${FILTER_IG_RF//\//\\/}/g" direwolf.conf
+fi
+
+if [ -n "$IGFILTER" ]; then
+  sed -i "s/^#IGFILTER.*$/IGFILTER ${IGFILTER//\//\\/}/g" direwolf.conf
+fi
+
 
 # Optionally start direwolf without rtl_fm as input
 if [ -n "$DW_STANDALONE" ]; then

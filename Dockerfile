@@ -1,11 +1,11 @@
-FROM debian:buster-slim as base
+FROM debian:bookworm-slim as base
 RUN apt-get update && apt-get -y dist-upgrade \
  && apt-get install -y \
     rtl-sdr \
     libasound2 \
     libusb-1.0-0 \
-    libhamlib2 \
-    libgps23 \
+    libhamlib4 \
+    libgps28 \
  && rm -rf /var/lib/apt/lists/*
 
 FROM base as builder
@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y \
     git \
     cmake \
     libasound2-dev \
+    libudev-dev \
+    libgpiod2 \
     libusb-1.0-0-dev \
     libhamlib-dev \
     libgps-dev \   
@@ -42,6 +44,7 @@ ENV SYMBOL "igate"
 RUN mkdir -p /etc/direwolf
 RUN mkdir -p /var/log/direwolf
 RUN addgroup -gid 242 direwolf && adduser -q -uid 242 -gid 242 --no-create-home --disabled-login --gecos "" direwolf 
+RUN usermod -a -G audio direwolf; usermod -a -G dialout direwolf
 COPY start.sh direwolf.conf /etc/direwolf/
 RUN chown 242.242 -R /etc/direwolf
 RUN chown 242.242 -R /var/log/direwolf

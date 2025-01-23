@@ -23,6 +23,12 @@ helm install w2bro/direwolf
 | `SYMBOL`    | No  | APRS symbol for PBEACON, defaults to `igate` |
 | `IGSERVER`  | No  | Override with the APRS server for your region, default for North America `noam.aprs2.net` |
 | `ADEVICE`   | No  | Override Direwolf's ADEVICE for digipeater, default is `stdin null` for receive-only igate |
+| `PTT`   | No  | Set PTT (push-to-talk) device for TX, not enabled by default. Example for digirig with Baofeng: `/dev/ttyUSB0 RTS` |
+| `DIGIPEAT` | No  | Enable digipeating, must also set `ADEVICE` and `PTT`.  Example value: `0 0 ^WIDE[3-7]-[1-7]$|^TEST$ ^WIDE[12]-[12]$ TRACE` |
+| `FILTER_RF_RF`  | No  | Set local filter for RF->RF transmissions |
+| `FILTER_IG_RF`  | No  | Set local filter for Internet->RF transmissions |
+| `IGFILTER`  | No  | Set filter for any Internet transmissions.  Primarily useful for bullitins and large nets. |
+| `IGTXVIA` | No  | Enable internet to RF, must also set `ADEVICE` and `PTT`. Example value: `0 WIDE1-1` |
 | `FREQUENCY` | No  | Override `rtl_fm` input frequency, default `144.39M` North America APRS |
 | `DW_STANDALONE` | No | Set to any value to disable rtl_fm, useful in digipeater applications. Must also set `ADEVICE` |
 | `DWARGS` | No | Set to add/pass any arguments to the direwolf executable, example `-t 0` for no color logs |
