@@ -38,7 +38,7 @@ ENV CALLSIGN "N0CALL"
 ENV PASSCODE "-1"
 ENV IGSERVER "noam.aprs2.net"
 ENV FREQUENCY "144.39M"
-ENV COMMENT "Direwolf in Docker w2bro/direwolf"
+ENV COMMENT "https://github.com/pheezer/docker-direwolf"
 ENV SYMBOL "igate"
 
 RUN mkdir -p /etc/direwolf
